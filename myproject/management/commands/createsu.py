@@ -9,5 +9,6 @@ class Command(BaseCommand):
 		# If it does not exist, then create a super-user with that username,
 		# Supply an email address and a password to it
 		# So, now we have an admin user to manage our AWS RDS database
+		print("WHAT HAPPENS - DOES IT EVEN GET HERE???")
 		if not User.objects.filter(username="awsadmin").exists():
 			User.objects.create_superuser("awsadmin", "arthur.lewis420@gmail.com", "AWSAdmin123")
