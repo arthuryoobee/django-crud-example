@@ -23,11 +23,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'iw+b1%p9&zw_+#gx+m&aw$gza2-_p6$03s3&4p+4kbd8%o0b_8'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-#ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['.ap-southeast-2.elasticbeanstalk.com']
+if 'PYTHONPATH' in os.environ:
+    # Debug = True
+    Debug = False
+    # Ensure the below line is set to the region where your elastic beanstalk is set up
+    ALLOWED_HOSTS = ['.ap-southeast-2.elasticbeanstalk.com']
+else:
+    # SECURITY WARNING: don't run with debug turned on in production!
+    # We need this to work in development environment but not on testing or production environments
+    # We do not want to reveal errors in our server-side to the public in case if that happens
+    DEBUG = True
+    ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -135,3 +141,44 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+if 'S3_BUCKET' in os.environ:
+
+    AWS_STORAGE_BUCKET_NAME = 'sample-crud-bucket-cs204'
+    AWS_S3_REGION_NAME = 'ap-southeast-2'
+
+    # Ideally these keys must be stored inside environment properties of Beanstalk
+    # and referenced as
+    # AWS_S3_ACCESS_KEY_ID = os.environ['AWS_S3_ACCESS_KEY_ID']
+    # AWS_S3_SECRET_ACCESS_KEY = os.environ['AWS_S3_SECRET_ACCESS_KEY']
+    AWS_S3_ACCESS_KEY_ID = 'AKIAWT2NGT2XROMK4IF5'
+    AWS_S3_SECRET_ACCESS_KEY = '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'
+
+    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+    AWS_S3_OBJECT_PARAMETERS = {
+       'CacheControl': 'max-age=86400', #Cache lasts for 1 day
+    }
+
+    AWS_S3_FILE_OVERWRITE = False
+    #AWS_DEFAULT_ACL = 'public-read'
+    AWS_DEFAULT_ACL = None
+    AWS_STATIC_FILES_LOCATION = 'static'
+    STATICFILES_DIRS = [
+       'static',
+    ]
+    STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_FILES_LOCATION)
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+    # Where to store the static files (bucket folder name):
+    # STATICFILES_LOCATION = 'static'
+    # Storage type
+    # STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+
+    # Where to store the media files (bucket folder name):
+    MEDIAFILES_LOCATION = 'media'
+    # Storage type
+    DEFAULT_FIRE_STORAGE = 'custom_storages.MediaStorage'
+
+    # STATIC_URL = 'https://{}/{}'.format(AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+
