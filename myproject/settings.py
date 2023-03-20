@@ -181,4 +181,5 @@ if 'S3_BUCKET' in os.environ:
     DEFAULT_FIRE_STORAGE = 'custom_storages.MediaStorage'
 
     # STATIC_URL = 'https://{}/{}'.format(AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
-
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
