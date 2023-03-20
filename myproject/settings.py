@@ -146,7 +146,7 @@ if 'S3_BUCKET' in os.environ:
     print("IS IT HERE??")
     print(AWS_ACCESS_KEY_ID)
 
-    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
     print("IS IT HERE??")
     print(AWS_SECRET_ACCESS_KEY)
 
