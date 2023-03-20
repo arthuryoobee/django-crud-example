@@ -178,9 +178,9 @@ if 'S3_BUCKET' in os.environ:
     # STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
     # Where to store the media files (bucket folder name):
-    MEDIAFILES_LOCATION = 'media'
+    # MEDIAFILES_LOCATION = 'media'
     # Storage type
-    DEFAULT_FIRE_STORAGE = 'custom_storages.MediaStorage'
+    # DEFAULT_FIRE_STORAGE = 'custom_storages.MediaStorage'
 
     # STATIC_URL = 'https://{}/{}'.format(AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 else:
