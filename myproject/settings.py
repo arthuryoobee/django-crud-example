@@ -156,7 +156,8 @@ if 'S3_BUCKET' in os.environ:
 
     AWS_S3_REGION_NAME = 'ap-southeast-2'
 
-    AWS_DEFAULT_ACL = 'public-read'
+    #AWS_DEFAULT_ACL = 'public-read'
+    AWS_DEFAULT_ACL = None
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
     print("IS IT HERE??")
