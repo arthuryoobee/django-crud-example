@@ -144,7 +144,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-'''
+
 if 'S3_BUCKET' in os.environ:
 
     AWS_STORAGE_BUCKET_NAME = 'sample-crud-bucket-cs204'
@@ -156,8 +156,8 @@ if 'S3_BUCKET' in os.environ:
     # and referenced as
     # AWS_S3_ACCESS_KEY_ID = os.environ['AWS_S3_ACCESS_KEY_ID']
     # AWS_S3_SECRET_ACCESS_KEY = os.environ['AWS_S3_SECRET_ACCESS_KEY']
-    AWS_S3_ACCESS_KEY_ID = 'AKIAWT2NGT2XROMK4IF5'
-    AWS_S3_SECRET_ACCESS_KEY = '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'
+    AWS_S3_ACCESS_KEY_ID = 'AKIAWT2NGT2X3SQ4VYGR'
+    AWS_S3_SECRET_ACCESS_KEY = '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'
 
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
     print("AWS S3 CUSTOM DOMAIN IS: ")
@@ -193,5 +193,3 @@ if 'S3_BUCKET' in os.environ:
 else:
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-'''
