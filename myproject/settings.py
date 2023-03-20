@@ -143,14 +143,31 @@ USE_TZ = True
 if 'S3_BUCKET' in os.environ:
     # aws settings
     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+    print("IS IT HERE??")
+    print(AWS_ACCESS_KEY_ID)
+
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+    print("IS IT HERE??")
+    print(AWS_SECRET_ACCESS_KEY)
+
     AWS_STORAGE_BUCKET_NAME = os.getenv('S3_BUCKET')
+    print("IS IT HERE??")
+    print(AWS_STORAGE_BUCKET_NAME)
+
     AWS_DEFAULT_ACL = 'public-read'
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+    print("IS IT HERE??")
+    print(AWS_S3_CUSTOM_DOMAIN)
+
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
     # s3 static settings
     AWS_LOCATION = 'static'
+
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
+    print("IS IT HERE??")
+    print(STATIC_URL)
+    
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 else:   
     STATIC_URL = '/static/'
