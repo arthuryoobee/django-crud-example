@@ -24,10 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'iw+b1%p9&zw_+#gx+m&aw$gza2-_p6$03s3&4p+4kbd8%o0b_8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-#ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['.ap-southeast-2.elasticbeanstalk.com']
+if 'PYTHONPATH' in os.environ:
+    # Debug = True
+    Debug = False
+    ALLOWED_HOSTS = ['.ap-southeast-2.elasticbeanstalk.com']
+else:
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = True
+    ALLOWED_HOSTS = []
 
 
 # Application definition
