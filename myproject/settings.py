@@ -144,7 +144,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
+'''
 if 'S3_BUCKET' in os.environ:
 
     AWS_STORAGE_BUCKET_NAME = 'sample-crud-bucket-cs204'
@@ -193,3 +193,4 @@ if 'S3_BUCKET' in os.environ:
 else:
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+'''
