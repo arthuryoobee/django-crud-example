@@ -142,12 +142,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-# STATIC_URL = '/static/'
+STATIC_URL = '/static/'
 
+'''
 if 'S3_BUCKET' in os.environ:
 
     AWS_STORAGE_BUCKET_NAME = 'sample-crud-bucket-cs204'
     AWS_S3_REGION_NAME = 'ap-southeast-2'
+
+    print("DOES IT GET HERE???")
 
     # Ideally these keys must be stored inside environment properties of Beanstalk
     # and referenced as
@@ -157,6 +160,8 @@ if 'S3_BUCKET' in os.environ:
     AWS_S3_SECRET_ACCESS_KEY = 'nTLT4T+PNoURDVa+X+plxAvVx6Uy+imBTgtLdQu2'
 
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+    print("AWS S3 CUSTOM DOMAIN IS: ")
+    print(AWS_S3_CUSTOM_DOMAIN)
 
     AWS_S3_OBJECT_PARAMETERS = {
        'CacheControl': 'max-age=86400', #Cache lasts for 1 day
@@ -170,6 +175,8 @@ if 'S3_BUCKET' in os.environ:
        'static',
     ]
     STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_FILES_LOCATION)
+    print("AWS S3 STATIC URL IS: ")
+    print(AWS_S3_CUSTOM_DOMAIN)    
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
     # Where to store the static files (bucket folder name):
@@ -187,3 +194,4 @@ else:
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+'''
